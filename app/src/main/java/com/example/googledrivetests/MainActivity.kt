@@ -12,6 +12,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.drive.DriveApi
+import com.google.api.client.googleapis.json.GoogleJsonResponseException
 import com.google.api.client.http.FileContent
 import com.google.api.client.http.HttpRequestInitializer
 import com.google.api.client.http.HttpTransport
@@ -78,14 +79,14 @@ class MainActivity : AppCompatActivity() {
 //        val metaDataSet = MetadataChangeSet.Builder()
 //            .setTitle("firstTestFolderRoot")
 //            .setMimeType("application/vnd.google-apps.folder")
-//            .build()
+//            .build()   <-- not using this code , dont uncomment == delete after test
 
         val fileMetaData = File()
          fileMetaData.name = "firstTestFolderRoot"
             fileMetaData.mimeType = "application/vnd.google-apps.folder"
 
-//        CoroutineScope(Dispatchers.IO).launch {
-//
+        CoroutineScope(Dispatchers.IO).launch {
+
 //            try {
 //                val file: File = storage.files().create(fileMetaData)
 //                    .setFields("id")
@@ -97,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 //                Log.e("Unable to create folder: ", "${e.details}")
 //
 //            }
-//        }
+        }
 
         CoroutineScope(Dispatchers.IO).launch {
             runBlocking {
@@ -109,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        val folder_id = "1wwvZ8j20rPBqCK5JphMNt-HBcSHvS94Y"
+        val folder_id = "1WDazY95oW1dDvNT3Z4EFIdYGhmsb-swj"
         CoroutineScope(Dispatchers.IO).launch {
             runBlocking {
                 val files = mutableListOf<File>()
